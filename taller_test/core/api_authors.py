@@ -15,6 +15,11 @@ def get_author(id):
     return peticion
 
 
+def get_libro_author(id):
+    endpoint = "/authors/books/{}".format(str(id))
+    peticion = requests.get(url + endpoint)
+    return peticion
+
 def create_author(id, author_name, date, status):
     endpoint = "/authors"
     headers = {"Content-Type": "application/json"}

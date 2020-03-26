@@ -12,6 +12,9 @@ class ApiRequestsAuthors(unittest.TestCase):
     def test_get_author(self, id):
         self.response = act.get_author(id)
 
+    def test_get_libro_author(self, id):
+        self.response = act.get_author(id)
+
     def test_create_author(self, id, nombre):
         self.response = act.create_author(id, nombre, self.now, True)
 

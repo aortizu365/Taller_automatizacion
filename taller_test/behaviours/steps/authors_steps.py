@@ -59,3 +59,13 @@ def step_impl(context, id):
 @then("el autor se elimina")
 def step_impl(context):
     test.test_validate_status_code(200)
+
+
+@when('consulto un libro de un autor con id "{id}"')
+def step_impl(context, id):
+    test.test_get_libro_author(id)
+
+
+@then("trae la informacion del libro de ese autor")
+def step_impl(context):
+    test.test_validate_status_code(200)

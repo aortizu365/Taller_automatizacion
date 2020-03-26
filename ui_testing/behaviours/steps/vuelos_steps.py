@@ -58,12 +58,92 @@ def step_impl(context, aerolinea):
     vuelos.test_seleccionar_aerolinea(aerolinea)
 
 
-@when(u'envio el formulario')
+@when(u'envio el formulario de busqueda de vuelo')
 def step_impl(context):
     vuelos.test_enviar_formulario()
 
 
 @then(u'El sistema me retorna vuelos')
 def step_impl(context):
-    vuelos.test_validar_respuesta()
+    vuelos.test_validar_reserva()
     vuelos.close()
+
+
+@step("selecciono el vuelo de ida mas costoso")
+def step_impl(context):
+    vuelos.test_ida_costoso()
+
+
+@step("selecciono el vuelo de retorno mas costoso")
+def step_impl(context):
+    vuelos.test_retorno_costoso()
+
+
+@step("envio las seleccion de vuelos")
+def step_impl(context):
+    vuelos.test_enviar_seleccion()
+
+
+@step(
+    'ingreso la informacion del pasajero "{numero}" con nombre "{nombre}" apellido "{apellido}" y selecciono la opcion  de comida "{comida}"')
+def step_impl(context, numero, nombre, apellido, comida):
+    vuelos.test_pasajero_numero(numero, nombre, apellido, comida)
+
+
+@step('selecciono la opcion de tarjeta "{tipo}"')
+def step_impl(context, tipo):
+    vuelos.test_tarjeta_tipo(tipo)
+
+
+@step('ingreso el numero de tarjeta "{numero}"')
+def step_impl(context, numero):
+    vuelos.test_tarjeta_numero(numero)
+
+
+@step('ingreso la fecha de expiracion de la tarjeta mes "{mes}" year "{year}"')
+def step_impl(context, mes, year):
+    vuelos.test_tarjeta_fecha(mes, year)
+
+
+@step('ingreso el nombre de la tarjeta "{nombre}" apellido "{apellido}"')
+def step_impl(context, nombre, apellido):
+    vuelos.test_tarjeta_nombre(nombre, apellido)
+
+
+@step('ingreso la direccion de facturacion "{direccion}"')
+def step_impl(context, direccion):
+    vuelos.test_direccion_facturacion(direccion)
+
+
+@step('ingreso la ciudad de facturacion "{ciudad}')
+def step_impl(context, ciudad):
+    vuelos.test_ciudad_facturacion(ciudad)
+
+@step('ingreso el estado de facturacion "{estado}"')
+def step_impl(context, estado):
+    vuelos.test_estado_facturacion(estado)
+
+
+@step('ingreso el codigo postal de facturacion "{numero}"')
+def step_impl(context, numero):
+    vuelos.test_codigo_postal_facturacion(numero)
+
+
+@step('ingreso el pais de facturacion "{pais}"')
+def step_impl(context, pais):
+    vuelos.test_estado_facturacion(pais)
+
+
+@step("selecciono la opcion de entrega como la misma de facturacion")
+def step_impl(context):
+    vuelos.test_entrega()
+
+
+@step("envio el formulario de compra")
+def step_impl(context):
+    vuelos.test_enviar_datos()
+
+
+@then("El sistema me retorna la verificacion de la reserva")
+def step_impl(context):
+    vuelos.test_validar_reserva()
