@@ -58,15 +58,14 @@ def step_impl(context, aerolinea):
     vuelos.test_seleccionar_aerolinea(aerolinea)
 
 
-@when(u'envio el formulario de busqueda de vuelo')
+@Then(u'envio el formulario de busqueda de vuelo')
 def step_impl(context):
     vuelos.test_enviar_formulario()
 
 
-@then(u'El sistema me retorna vuelos')
+@given("que he buscado un vuelo y estoy en la pagina de resultados")
 def step_impl(context):
-    vuelos.test_validar_reserva()
-    vuelos.close()
+    vuelos.test_pagina_resultados_busqueda_vuelos()
 
 
 @step("selecciono el vuelo de ida mas costoso")
@@ -79,9 +78,14 @@ def step_impl(context):
     vuelos.test_retorno_costoso()
 
 
-@step("envio las seleccion de vuelos")
+@Then("envio las seleccion de vuelos")
 def step_impl(context):
     vuelos.test_enviar_seleccion()
+
+
+@given("que he seleccionado un vuelo de ida y vuelta")
+def step_impl(context):
+    vuelos.test_pagina_ida_vuelta()
 
 
 @step(
@@ -119,6 +123,7 @@ def step_impl(context, direccion):
 def step_impl(context, ciudad):
     vuelos.test_ciudad_facturacion(ciudad)
 
+
 @step('ingreso el estado de facturacion "{estado}"')
 def step_impl(context, estado):
     vuelos.test_estado_facturacion(estado)
@@ -147,3 +152,4 @@ def step_impl(context):
 @then("El sistema me retorna la verificacion de la reserva")
 def step_impl(context):
     vuelos.test_validar_reserva()
+    vuelos.close()

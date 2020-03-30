@@ -1,6 +1,6 @@
 Feature: seleccionar vuelo en Mercury Tours
 
-  Scenario: reservar  vuelos para 3 pasajeros
+  Scenario: Buscar vuelos desde una ciudad a otra
     Given Estoy en la pagina de Mercury Tours para seleccionar vuelo
     When Hago Login con usuario "aortizu" y password "abc123"
     And selecciono un trayecto One way
@@ -11,10 +11,16 @@ Feature: seleccionar vuelo en Mercury Tours
     And selecciono el retorno en "May" "20"
     And selecciono la clase Business
     And selecciono la aerolinea "Unified Airlines"
-    And envio el formulario de busqueda de vuelo
+    Then  envio el formulario de busqueda de vuelo
+
+  Scenario: Seleccionar vuelos
+    Given que he buscado un vuelo y estoy en la pagina de resultados
     And selecciono el vuelo de ida mas costoso
     And selecciono el vuelo de retorno mas costoso
-    And envio las seleccion de vuelos
+    Then envio las seleccion de vuelos
+
+  Scenario: Realiza reserva de vuelos
+    Given que he seleccionado un vuelo de ida y vuelta
     And ingreso la informacion del pasajero "1" con nombre "Juan" apellido "Perez" y selecciono la opcion  de comida "Hindu"
     And ingreso la informacion del pasajero "2" con nombre "Maria" apellido "Gonzalez" y selecciono la opcion  de comida "Diabetic"
     And ingreso la informacion del pasajero "3" con nombre "Pedro" apellido "Marin" y selecciono la opcion  de comida "Vegetarian"
@@ -30,4 +36,3 @@ Feature: seleccionar vuelo en Mercury Tours
     And selecciono la opcion de entrega como la misma de facturacion
     And envio el formulario de compra
     Then El sistema me retorna la verificacion de la reserva
-    Then El sistema me retorna vuelos

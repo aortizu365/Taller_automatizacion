@@ -105,6 +105,14 @@ class VuelosTest(unittest.TestCase):
         elem = self.driver.find_element_by_css_selector("td:nth-child(1) tr:nth-child(1) > td:nth-child(1) > img:nth-child(1)")
         self.assertTrue(elem)
 
+    def test_pagina_resultados_busqueda_vuelos(self):
+        elem = self.driver.find_element_by_name("reserveFlights")
+        self.assertTrue(elem)
+
+    def test_pagina_ida_vuelta(self):
+        elem = self.driver.find_element_by_name("buyFlights")
+        self.assertTrue(elem)
+
     def close(self):
         self.driver.quit()
         print("prueba completada con éxito")
